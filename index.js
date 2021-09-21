@@ -5,15 +5,25 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send(process.env.TEST);
-});
-// passport.use(
-//   new GoogleStrategy({
-//     clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
-//     clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-//   })
-// );
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+      callbackURL: "/auth/google/callback",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      return null;
+    }
+  )
+);
+
+app.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+app.get("/auth/google/callback", passport.authenticate("google"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
