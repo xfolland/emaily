@@ -13,17 +13,13 @@ passport.deserializeUser(async (id, done) => {
   done(null, user);
 });
 
-const callbackURL =
-  process.env.NODE_ENV === "production"
-    ? "https://stark-coast-68476.herokuapp.com/auth/google/callback"
-    : "/auth/google/callback";
-
 passport.use(
   new GoogleStrategy(
     {
       clientID: process.env.GOOGLE_OAUTH_CLIENT_ID,
       clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-      callbackURL,
+      callbackURL: "/auth/google/callback",
+      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ googleID: profile.id });
