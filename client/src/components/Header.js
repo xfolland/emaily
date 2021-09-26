@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import StripePayments from "./StripePayments";
 
 export default connect((state) => {
   return { auth: state.auth };
@@ -20,7 +21,10 @@ export default connect((state) => {
           return (
             <>
               <li>
-                <p>this could be another button</p>
+                <StripePayments />
+              </li>
+              <li style={{ marginLeft: "10px" }}>
+                Credits: {this.props.auth.credits}
               </li>
               <li>
                 <a href="/api/logout">Logout</a>
