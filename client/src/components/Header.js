@@ -23,7 +23,7 @@ export default connect((state) => {
               <li>
                 <StripePayments />
               </li>
-              <li style={{ marginLeft: "10px" }}>
+              <li style={{ marginLeft: "15px", marginRight: "5px" }}>
                 Credits: {this.props.auth.credits}
               </li>
               <li>
