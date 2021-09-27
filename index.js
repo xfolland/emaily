@@ -4,6 +4,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 mongoose.connect(process.env.MONGO_URI);
@@ -22,6 +23,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/paymentRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   const path = require("path");
