@@ -2,20 +2,11 @@ import "materialize-css/dist/css/materialize.min.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
+import Dashboard from "./Dashboard";
 import Header from "./Header";
-import { fetchUser } from "../actions";
 import Landing from "./Landing";
-
-const Dashboard = () => (
-  <div>
-    <h2>DASHBOARD</h2>
-  </div>
-);
-const SurveyNew = () => (
-  <div>
-    <h2>NEW SURVEY</h2>
-  </div>
-);
+import SurveyNew from "./surveys/SurveyNew";
+import { fetchUser } from "../actions";
 
 export default connect(null, { fetchUser })(
   class App extends Component {

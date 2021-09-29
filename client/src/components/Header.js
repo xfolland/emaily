@@ -27,6 +27,9 @@ export default connect((state) => {
                 Credits: {this.props.auth.credits}
               </li>
               <li>
+                <Link to="/surveys">Dashboard</Link>
+              </li>
+              <li>
                 <a href="/api/logout">Logout</a>
               </li>
             </>
