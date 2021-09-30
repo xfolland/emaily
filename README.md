@@ -13,6 +13,6 @@ It requires the following environment variables:
 - SENDGRID_FROM_EMAIL
 - STRIPE_SECRET_KEY
 
-The REACT_APP_STRIPE_PUBLISHABLE_KEY environment variable in client/.env.production should be changed to your own as well.
+The REACT_APP_STRIPE_PUBLISHABLE_KEY environment variable in client/.env.production should be changed to your own as well, and the webhooks url should be set up on sendgrid.
 
 It may be available online in the future.
